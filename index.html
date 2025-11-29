@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mostafa's Portfolio & Achievements</title>
+    <title>Mostafa's Digital Profile & Milestones</title>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -14,7 +14,10 @@
         }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* Slate-50 */
+            /* Subtle site-wide gradient */
+            background-color: #f8fafc;
+            background-image: linear-gradient(to bottom right, #f8fafc, #eff6ff); /* Slate-50 to Blue-50 */
+            min-height: 100vh;
         }
         .achievement-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -30,107 +33,156 @@
             background-clip: text;
             text-fill-color: transparent;
         }
+        /* Style for the fixed overlay when sidebar is open */
+        .sidebar-overlay {
+            z-index: 40; /* Lower than sidebar (z-50) */
+        }
     </style>
 </head>
-<body class="antialiased text-gray-800">
+<body class="antialiased text-gray-800 relative overflow-x-hidden">
+
+    <!-- Sidebar Overlay (Click to close) -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-gray-900 bg-opacity-50 transition-opacity duration-300 ease-in-out opacity-0 pointer-events-none sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <!-- Sidebar (Off-Canvas Menu) -->
+    <div id="sidebar" class="fixed top-0 right-0 w-64 h-full bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out p-6">
+        <div class="flex justify-between items-center mb-8">
+            <h3 class="text-xl font-bold text-gray-800">Menu</h3>
+            <button onclick="toggleSidebar()" class="text-gray-500 hover:text-gray-900 transition">
+                <!-- Close Icon (X) -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+        </div>
+
+        <nav class="space-y-4">
+            <a href="#tech" class="block text-gray-700 hover:text-blue-600 font-medium transition">Technical Skills</a>
+            <a href="#academic" class="block text-gray-700 hover:text-blue-600 font-medium transition">Academic Milestones</a>
+            <a href="#hobbies" class="block text-gray-700 hover:text-blue-600 font-medium transition">Interests & Hobbies</a>
+        </nav>
+
+        <div class="mt-10 pt-6 border-t border-gray-100 space-y-3">
+            <h4 class="text-sm font-semibold text-gray-500">Contact</h4>
+            <a href="#" class="block text-gray-700 hover:text-blue-600 transition">Email</a>
+            <a href="https://lordmostafa.github.io/Landing-Page/" target="_blank" class="block text-gray-700 hover:text-blue-600 transition">GitHub</a>
+            <a href="#" class="block text-gray-700 hover:text-blue-600 transition">LinkedIn</a>
+        </div>
+    </div>
 
     <!-- Header & Hero Section -->
-    <header class="bg-white shadow-md">
-        <div class="container mx-auto px-4 py-8 md:py-12 text-center">
-            <div class="inline-block p-2 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full mb-4">
-                <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center text-4xl font-extrabold text-blue-700">
+    <header class="bg-white shadow-lg sticky top-0 z-30">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full flex items-center justify-center text-sm font-bold text-white">
                     M
                 </div>
+                <h1 class="ml-3 text-2xl font-extrabold text-gray-800 hidden sm:block">Mostafa</h1>
             </div>
-            <h1 class="text-5xl md:text-6xl font-extrabold leading-tight">
-                <span class="text-gradient">Mostafa's</span> Digital Profile
-            </h1>
-            <p class="mt-4 text-xl text-gray-600 max-w-2xl mx-auto">
-                Tracking progress in Tech, Academia, and Personal Development.
-            </p>
+            
+            <!-- Hamburger Icon Button -->
+            <button onclick="toggleSidebar()" class="p-2 rounded-lg hover:bg-gray-100 transition focus:outline-none" aria-label="Open menu">
+                <!-- Hamburger Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            </button>
         </div>
     </header>
 
-    <!-- Main Content Container -->
-    <main class="container mx-auto px-4 py-12 md:py-16">
+    <!-- Hero Content (Expanded) -->
+    <section class="container mx-auto px-4 py-12 md:py-20 text-center">
+        <h1 class="text-5xl md:text-7xl font-extrabold leading-tight">
+            <span class="text-gradient">Mostafa's</span> Progress Hub
+        </h1>
+        <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
+            A combined profile tracking milestones in healthcare, programming, and emerging technology adoption, demonstrating a commitment to diverse professional growth.
+        </p>
+    </section>
 
-        <!-- Skills & Tech Stack Section -->
-        <section id="skills" class="mb-16">
-            <h2 class="text-3xl font-bold border-b-4 border-emerald-500/50 pb-2 mb-6 inline-block">Core Skills</h2>
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-center">
-                <!-- Skill Card 1 -->
-                <div class="p-4 bg-white rounded-xl shadow-lg border border-gray-100">
-                    <span class="text-3xl" role="img" aria-label="Code">💻</span>
-                    <p class="text-sm font-semibold mt-2">Web Dev (HTML/CSS/JS)</p>
+    <!-- Main Content Container -->
+    <main class="container mx-auto px-4 py-8 md:py-12">
+
+        <!-- Technical & Coding Achievements Section -->
+        <section id="tech" class="mb-16 p-6 bg-white rounded-2xl shadow-xl">
+            <h2 class="text-4xl font-bold text-blue-700 border-b-4 border-blue-200/50 pb-3 mb-8">Technical & Coding Achievements</h2>
+            
+            <div class="grid md:grid-cols-2 gap-10">
+                
+                <!-- Subgroup 1: Core Languages & Fundamentals -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-700 flex items-center">
+                        <span class="text-3xl mr-3">💻</span> Core Languages & Fundamentals
+                    </h3>
+                    <div class="space-y-4">
+                        <p class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                            **Web Fundamentals:** Proficient in HTML structure, responsive CSS (with Tailwind), and modern JavaScript (ES6+), resulting in clean, functional web apps (like this one).
+                        </p>
+                        <p class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                            **Backend & Data:** Developing skills in Python for scripting and data handling, and C#/.NET for robust application development.
+                        </p>
+                    </div>
                 </div>
-                <!-- Skill Card 2 -->
-                <div class="p-4 bg-white rounded-xl shadow-lg border border-gray-100">
-                    <span class="text-3xl" role="img" aria-label="AI Model">🧠</span>
-                    <p class="text-sm font-semibold mt-2">LLM & AI Integration</p>
+
+                <!-- Subgroup 2: Frameworks & Platforms -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-700 flex items-center">
+                        <span class="text-3xl mr-3">📱</span> Frameworks & Platforms
+                    </h3>
+                    <div class="space-y-4">
+                        <p class="bg-emerald-50 p-4 rounded-lg border-l-4 border-emerald-500">
+                            **Mobile Development:** Active learning and implementation using Kotlin for Android application development via Android Studio.
+                        </p>
+                        <p class="bg-emerald-50 p-4 rounded-lg border-l-4 border-emerald-500">
+                            **Styling/UI:** Expert use of Tailwind CSS for rapid and responsive UI creation, ensuring optimal display across all devices.
+                        </p>
+                    </div>
                 </div>
-                <!-- Skill Card 3 -->
-                <div class="p-4 bg-white rounded-xl shadow-lg border border-gray-100">
-                    <span class="text-3xl" role="img" aria-label="Python">🐍</span>
-                    <p class="text-sm font-semibold mt-2">Python & Data</p>
+            </div>
+        </section>
+        
+        <!-- Academic & Clinical Milestones Section -->
+        <section id="academic" class="mb-16 p-6 bg-white rounded-2xl shadow-xl">
+            <h2 class="text-4xl font-bold text-emerald-700 border-b-4 border-emerald-200/50 pb-3 mb-8">Academic & Clinical Milestones</h2>
+            
+            <div class="space-y-6">
+
+                <!-- Milestone 1: Master's Degree Pursuit -->
+                <div class="achievement-card p-6 bg-emerald-50 rounded-xl shadow-md border border-emerald-200">
+                    <h3 class="text-xl font-bold text-gray-900 flex items-center">
+                        <span class="text-4xl mr-3">📚</span> Pursuing Master of Science in Medical-Surgical Nursing
+                    </h3>
+                    <p class="text-sm text-gray-500 mt-1 mb-2">Target Completion: 2026</p>
+                    <p class="text-gray-700">Currently enrolled and progressing through the M.Sc. program, specializing in advanced clinical care, research methods, and evidence-based practice within the medical-surgical field.</p>
                 </div>
-                <!-- Skill Card 4 -->
-                <div class="p-4 bg-white rounded-xl shadow-lg border border-gray-100">
-                    <span class="text-3xl" role="img" aria-label="C#">💿</span>
-                    <p class="text-sm font-semibold mt-2">C# & .NET</p>
-                </div>
-                <!-- Skill Card 5 -->
-                <div class="p-4 bg-white rounded-xl shadow-lg border border-gray-100">
-                    <span class="text-3xl" role="img" aria-label="Kotlin">📱</span>
-                    <p class="text-sm font-semibold mt-2">Android (Kotlin)</p>
-                </div>
-                <!-- Skill Card 6 -->
-                <div class="p-4 bg-white rounded-xl shadow-lg border border-gray-100">
-                    <span class="text-3xl" role="img" aria-label="Nursing">⚕️</span>
-                    <p class="text-sm font-semibold mt-2">Medical-Surgical Science</p>
+
+                <!-- Milestone 2: Bachelor's Degree Completion -->
+                <div class="achievement-card p-6 bg-emerald-50 rounded-xl shadow-md border border-emerald-200">
+                    <h3 class="text-xl font-bold text-gray-900 flex items-center">
+                        <span class="text-4xl mr-3">🎓</span> Bachelor of Science in Nursing
+                    </h3>
+                    <p class="text-sm text-gray-500 mt-1 mb-2">Status: Completed | Field: Clinical Healthcare</p>
+                    <p class="text-gray-700">Successfully obtained a B.Sc. in Nursing, establishing a comprehensive foundation in patient assessment, critical care, and professional medical ethics.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Achievements Section -->
-        <section id="achievements">
-            <h2 class="text-3xl font-bold border-b-4 border-blue-500/50 pb-2 mb-8 inline-block">Key Achievements & Milestones</h2>
+        <!-- Interests & Hobbies Section -->
+        <section id="hobbies" class="p-6 bg-white rounded-2xl shadow-xl">
+            <h2 class="text-4xl font-bold text-indigo-700 border-b-4 border-indigo-200/50 pb-3 mb-8">Interests & Hobbies</h2>
             
-            <div class="space-y-6">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-                <!-- Achievement Card 1: Academic -->
-                <div class="achievement-card bg-white p-6 rounded-xl shadow-lg flex flex-col md:flex-row items-start md:space-x-6">
-                    <div class="flex-shrink-0 mb-4 md:mb-0">
-                        <span class="text-5xl text-blue-600" role="img" aria-label="Graduation">🎓</span>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-gray-900">Bachelor of Science in Nursing</h3>
-                        <p class="text-sm text-gray-500 mt-1 mb-2">Completion Date: [Insert Year]</p>
-                        <p class="text-gray-700">Successfully completed B.Sc. in Nursing, providing a strong foundation in clinical practice and patient care principles.</p>
-                    </div>
+                <div class="p-4 bg-indigo-50 rounded-lg border-l-4 border-indigo-500">
+                    <span class="text-3xl" role="img" aria-label="Brain">🧠</span>
+                    <h4 class="font-semibold mt-2">LLM & AI Model Research</h4>
+                    <p class="text-sm text-gray-600">Deep interest in tracking, comparing, and leveraging new Large Language Models (LLMs) for complex tasks like academic presentation structuring and knowledge retrieval.</p>
                 </div>
-
-                <!-- Achievement Card 2: Technical -->
-                <div class="achievement-card bg-white p-6 rounded-xl shadow-lg flex flex-col md:flex-row items-start md:space-x-6">
-                    <div class="flex-shrink-0 mb-4 md:mb-0">
-                        <span class="text-5xl text-emerald-600" role="img" aria-label="Code">🚀</span>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-gray-900">Full Stack Web Development Mini-Project</h3>
-                        <p class="text-sm text-gray-500 mt-1 mb-2">Status: In Progress | Key Tech: HTML, Tailwind CSS, JavaScript</p>
-                        <p class="text-gray-700">Designed and deployed a responsive landing page (this one!) using modern front-end practices, focusing on clean code and adaptive design.</p>
-                    </div>
+                <div class="p-4 bg-indigo-50 rounded-lg border-l-4 border-indigo-500">
+                    <span class="text-3xl" role="img" aria-label="Video Camera">🎬</span>
+                    <h4 class="font-semibold mt-2">Content Creation & Media</h4>
+                    <p class="text-sm text-gray-600">Active engagement in creating content for platforms like YouTube, focusing on media production and storytelling.</p>
                 </div>
-
-                <!-- Achievement Card 3: Research/Interest -->
-                <div class="achievement-card bg-white p-6 rounded-xl shadow-lg flex flex-col md:flex-row items-start md:space-x-6">
-                    <div class="flex-shrink-0 mb-4 md:mb-0">
-                        <span class="text-5xl text-yellow-600" role="img" aria-label="AI">💡</span>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-gray-900">LLM Comparative Analysis & Tool Integration</h3>
-                        <p class="text-sm text-gray-500 mt-1 mb-2">Ongoing Learning Initiative</p>
-                        <p class="text-gray-700">Developed a systematic approach to comparing new LLM releases, integrating their APIs to assist with academic research and content generation tasks (e.g., presentation structuring).</p>
-                    </div>
+                <div class="p-4 bg-indigo-50 rounded-lg border-l-4 border-indigo-500">
+                    <span class="text-3xl" role="img" aria-label="Controller">🎮</span>
+                    <h4 class="font-semibold mt-2">Gaming & Entertainment</h4>
+                    <p class="text-sm text-gray-600">Enjoying games, movies, and TV shows as a pastime, using the tag 'bright master' in the gaming community.</p>
                 </div>
             </div>
         </section>
@@ -140,17 +192,32 @@
     <!-- Footer -->
     <footer class="bg-gray-800 text-white mt-16">
         <div class="container mx-auto px-4 py-8 text-center">
-            <p>&copy; <span id="current-year"></span> Mostafa. Built with HTML, Tailwind CSS, and a desire for progress.</p>
-            <div class="flex justify-center space-x-4 mt-3 text-sm">
-                <a href="#" class="hover:text-blue-400 transition">Email</a>
-                <a href="https://github.com/your-username" target="_blank" class="hover:text-blue-400 transition">GitHub</a>
-                <a href="#" class="hover:text-blue-400 transition">LinkedIn</a>
-            </div>
+            <p>&copy; <span id="current-year"></span> Mostafa. Built with code and determination.</p>
         </div>
     </footer>
 
-    <!-- Simple JavaScript for Year (Optional but nice) -->
+    <!-- JavaScript for Sidebar and Year -->
     <script>
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+
+        function toggleSidebar() {
+            const isHidden = sidebar.classList.contains('translate-x-full');
+            
+            if (isHidden) {
+                // Show sidebar
+                sidebar.classList.remove('translate-x-full');
+                overlay.classList.remove('opacity-0', 'pointer-events-none');
+                overlay.classList.add('opacity-100', 'pointer-events-auto');
+            } else {
+                // Hide sidebar
+                sidebar.classList.add('translate-x-full');
+                overlay.classList.remove('opacity-100', 'pointer-events-auto');
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+            }
+        }
+
+        // Set current year in footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
 </body>
