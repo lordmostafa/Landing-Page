@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostafa's Portfolio & Achievements</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563EB; /* Blue-600 */
+            --secondary-color: #10B981; /* Emerald-500 */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Slate-50 */
+        }
+        .achievement-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        .text-gradient {
+            background-image: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-800">
+
+    <!-- Header & Hero Section -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-8 md:py-12 text-center">
+            <div class="inline-block p-2 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full mb-4">
+                <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center text-4xl font-extrabold text-blue-700">
+                    M
+                </div>
+            </div>
+            <h1 class="text-5xl md:text-6xl font-extrabold leading-tight">
+                <span class="text-gradient">Mostafa's</span> Digital Profile
+            </h1>
+            <p class="mt-4 text-xl text-gray-600 max-w-2xl mx-auto">
+                Tracking progress in Tech, Academia, and Personal Development.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="container mx-auto px-4 py-12 md:py-16">
+
+        <!-- Skills & Tech Stack Section -->
+        <section id="skills" class="mb-16">
+            <h2 class="text-3xl font-bold border-b-4 border-emerald-500/50 pb-2 mb-6 inline-block">Core Skills</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-center">
+                <!-- Skill Card 1 -->
+                <div class="p-4 bg-white rounded-xl shadow-lg border border-gray-100">
+                    <span class="text-3xl" role="img" aria-label="Code">💻</span>
+                    <p class="text-sm font-semibold mt-2">Web Dev (HTML/CSS/JS)</p>
+                </div>
+                <!-- Skill Card 2 -->
+                <div class="p-4 bg-white rounded-xl shadow-lg border border-gray-100">
+                    <span class="text-3xl" role="img" aria-label="AI Model">🧠</span>
+                    <p class="text-sm font-semibold mt-2">LLM & AI Integration</p>
+                </div>
+                <!-- Skill Card 3 -->
+                <div class="p-4 bg-white rounded-xl shadow-lg border border-gray-100">
+                    <span class="text-3xl" role="img" aria-label="Python">🐍</span>
+                    <p class="text-sm font-semibold mt-2">Python & Data</p>
+                </div>
+                <!-- Skill Card 4 -->
+                <div class="p-4 bg-white rounded-xl shadow-lg border border-gray-100">
+                    <span class="text-3xl" role="img" aria-label="C#">💿</span>
+                    <p class="text-sm font-semibold mt-2">C# & .NET</p>
+                </div>
+                <!-- Skill Card 5 -->
+                <div class="p-4 bg-white rounded-xl shadow-lg border border-gray-100">
+                    <span class="text-3xl" role="img" aria-label="Kotlin">📱</span>
+                    <p class="text-sm font-semibold mt-2">Android (Kotlin)</p>
+                </div>
+                <!-- Skill Card 6 -->
+                <div class="p-4 bg-white rounded-xl shadow-lg border border-gray-100">
+                    <span class="text-3xl" role="img" aria-label="Nursing">⚕️</span>
+                    <p class="text-sm font-semibold mt-2">Medical-Surgical Science</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section id="achievements">
+            <h2 class="text-3xl font-bold border-b-4 border-blue-500/50 pb-2 mb-8 inline-block">Key Achievements & Milestones</h2>
+            
+            <div class="space-y-6">
+
+                <!-- Achievement Card 1: Academic -->
+                <div class="achievement-card bg-white p-6 rounded-xl shadow-lg flex flex-col md:flex-row items-start md:space-x-6">
+                    <div class="flex-shrink-0 mb-4 md:mb-0">
+                        <span class="text-5xl text-blue-600" role="img" aria-label="Graduation">🎓</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900">Bachelor of Science in Nursing</h3>
+                        <p class="text-sm text-gray-500 mt-1 mb-2">Completion Date: [Insert Year]</p>
+                        <p class="text-gray-700">Successfully completed B.Sc. in Nursing, providing a strong foundation in clinical practice and patient care principles.</p>
+                    </div>
+                </div>
+
+                <!-- Achievement Card 2: Technical -->
+                <div class="achievement-card bg-white p-6 rounded-xl shadow-lg flex flex-col md:flex-row items-start md:space-x-6">
+                    <div class="flex-shrink-0 mb-4 md:mb-0">
+                        <span class="text-5xl text-emerald-600" role="img" aria-label="Code">🚀</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900">Full Stack Web Development Mini-Project</h3>
+                        <p class="text-sm text-gray-500 mt-1 mb-2">Status: In Progress | Key Tech: HTML, Tailwind CSS, JavaScript</p>
+                        <p class="text-gray-700">Designed and deployed a responsive landing page (this one!) using modern front-end practices, focusing on clean code and adaptive design.</p>
+                    </div>
+                </div>
+
+                <!-- Achievement Card 3: Research/Interest -->
+                <div class="achievement-card bg-white p-6 rounded-xl shadow-lg flex flex-col md:flex-row items-start md:space-x-6">
+                    <div class="flex-shrink-0 mb-4 md:mb-0">
+                        <span class="text-5xl text-yellow-600" role="img" aria-label="AI">💡</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900">LLM Comparative Analysis & Tool Integration</h3>
+                        <p class="text-sm text-gray-500 mt-1 mb-2">Ongoing Learning Initiative</p>
+                        <p class="text-gray-700">Developed a systematic approach to comparing new LLM releases, integrating their APIs to assist with academic research and content generation tasks (e.g., presentation structuring).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="container mx-auto px-4 py-8 text-center">
+            <p>&copy; <span id="current-year"></span> Mostafa. Built with HTML, Tailwind CSS, and a desire for progress.</p>
+            <div class="flex justify-center space-x-4 mt-3 text-sm">
+                <a href="#" class="hover:text-blue-400 transition">Email</a>
+                <a href="https://github.com/your-username" target="_blank" class="hover:text-blue-400 transition">GitHub</a>
+                <a href="#" class="hover:text-blue-400 transition">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Simple JavaScript for Year (Optional but nice) -->
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
